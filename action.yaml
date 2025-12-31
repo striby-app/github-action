@@ -1,0 +1,15 @@
+name: 'striby.app'
+description: 'Integrate your CI/CD with striby.app'
+inputs:
+  apiKey:
+    description: "api key for accessing striby.ap api"
+    required: true
+  operation:
+    description: "operation that you want to perform"
+    required: true
+  payload:
+    description: "payload for the operation"
+    required: false
+runs:
+  using: 'node24'
+  main: 'dist/index.js'
