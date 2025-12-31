@@ -10,6 +10,9 @@ inputs:
   payload:
     description: "payload for the operation"
     required: false
+  filePathToPost:
+    description: "file path to post as body"
+    required: false
 outputs:
   result:
     description: "Action result as string json"
