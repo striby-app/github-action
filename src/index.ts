@@ -4,10 +4,12 @@ import { Striby } from "./striby";
 export type Operation =
   | "get-last-finished-deployment"
   | "start-deployment"
-  | "update-deployment";
+  | "update-deployment"
+  | "send-playwright-results";
 
 export interface ActionParams {
   apiKey: string;
+  filePathToPost: string;
   operation: Operation;
   payload: any;
 }
@@ -16,12 +18,14 @@ function parsedParams(): ActionParams {
   const apiKey = core.getInput("apiKey");
   const operation = core.getInput("operation") as Operation;
   const payload = JSON.parse(core.getInput("payload") || "{}");
+  const filePathToPost = core.getInput("filePathToPost");
 
   console.log(
     "================================ params ================================"
   );
   console.log(`apiKey=${apiKey}`);
   console.log(`operation=${operation}`);
+  console.log(`filePathToPost=${filePathToPost}`);
   console.log(`payload=${JSON.stringify(payload)}`);
   console.log(
     "========================================================================"
@@ -35,6 +39,7 @@ function parsedParams(): ActionParams {
     apiKey,
     operation,
     payload,
+    filePathToPost
   };
 }
 
