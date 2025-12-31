@@ -10,6 +10,9 @@ inputs:
   payload:
     description: "payload for the operation"
     required: false
+outputs:
+  result:
+    description: "Action result as string json"
 runs:
   using: 'node24'
   main: 'lib/index.js'
