@@ -17,6 +17,9 @@ function parsedParams(): ActionParams {
   const operation = core.getInput("operation") as Operation;
   const payload = JSON.parse(core.getInput("payload") || "{}");
 
+  console.log(`apiKey=${apiKey}`);
+  console.log(`operation=${operation}`);
+  console.log(`payload=${JSON.stringify(payload)}`);
 
   if (!apiKey) {
     throw "apiKey is missing";
