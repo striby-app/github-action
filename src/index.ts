@@ -17,9 +17,15 @@ function parsedParams(): ActionParams {
   const operation = core.getInput("operation") as Operation;
   const payload = JSON.parse(core.getInput("payload") || "{}");
 
+  console.log(
+    "================================ params ================================"
+  );
   console.log(`apiKey=${apiKey}`);
   console.log(`operation=${operation}`);
   console.log(`payload=${JSON.stringify(payload)}`);
+  console.log(
+    "========================================================================"
+  );
 
   if (!apiKey) {
     throw "apiKey is missing";
@@ -28,14 +34,20 @@ function parsedParams(): ActionParams {
   return {
     apiKey,
     operation,
-    payload
+    payload,
   };
 }
 
 async function run(): Promise<void> {
   try {
     const result = await new Striby(parsedParams()).run();
+    console.log(
+      "================================ output ================================"
+    );
     console.log(result);
+    console.log(
+      "========================================================================"
+    );
     core.setOutput("result", result);
   } catch (exception) {
     core.setFailed(exception);
