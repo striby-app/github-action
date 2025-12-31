@@ -41,14 +41,16 @@ function parsedParams(): ActionParams {
 async function run(): Promise<void> {
   try {
     const result = await new Striby(parsedParams()).run();
+    const resultAsString = JSON.stringify(result);
     console.log(
       "================================ output ================================"
     );
-    console.log(result);
+
+    console.log(resultAsString);
     console.log(
       "========================================================================"
     );
-    core.setOutput("result", result);
+    core.setOutput("result", resultAsString);
   } catch (exception) {
     core.setFailed(exception);
   }
