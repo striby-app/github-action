@@ -4,7 +4,7 @@ export class Striby {
   private params!: ActionParams;
 
   private serverOptions = {
-    baseUrl: "http://localhost:5000",
+    baseUrl: "https://api.striby.app",
   };
 
   private actionUrls = {
