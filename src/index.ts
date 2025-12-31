@@ -35,6 +35,7 @@ function parsedParams(): ActionParams {
 async function run(): Promise<void> {
   try {
     const result = await new Striby(parsedParams()).run();
+    console.log(result);
     core.setOutput("result", result);
   } catch (exception) {
     core.setFailed(exception);
